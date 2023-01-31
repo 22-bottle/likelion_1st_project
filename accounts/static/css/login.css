@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Cafe24Oneprettynight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MYHaemalgeunSangsang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYHaemalgeunSangsang.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#logo{
+    background-color: white;
+    border: 3px solid white;
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    font-family: 'Cafe24Oneprettynight';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    color: #000000;
+}
+#wrap{     
+    margin-top: 130px;
+    background-color: white; 
+    text-align: center;
+    width: 100%;
+    border-radius: 1px;
+ }
+
+#id{
+    width: 400px;
+    height: 50px;
+    position: absolute;
+    left: 39%;  
+    top: 250px;
+    border-radius: 1.5px;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+#password{
+    position: absolute;
+    left: 39%;  
+    top: 300px;
+    width: 400px;
+    height: 50px;
+    border-radius: 1.5px;
+    border: 1px solid black;
+}
+#btn{
+    position: absolute;
+    left: 39%;  
+    top: 410px;
+    width: 405px;
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid #b7e3f1;
+    color: white;
+    background-color:#5B91A3; 
+}
+#btn:hover{
+    background-color: #70a7b8;
+}
+#signup{
+    position: absolute;
+    left: 45%;
+    top: 475px;
+    text-align: center;
+    font-size: small;
+    color: gray;
+    padding-left: 20px;
+}
+#signup_btn{
+    border: 3px solid white;
+    width: 7%;
+    font-size: small;
+    text-decoration: underline;
+    margin-left: 0px;
+    padding-left: 0px;
+    
+}
+
+.login_form {
+    padding: 60px 50px;
+    padding-bottom: 10px;
+}
+#image{
+    width: 15px;
+    height: 15px;
+}
+.error{
+    position: absolute;
+    left: 39%;
+    top: 355px;
+    float:left;
+}
+#error_content{
+    font-size: small;
+    color:red;
+}

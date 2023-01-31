@@ -1,0 +1,31 @@
+<!-- <form class="login_form" action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    username: <input type="text" name="username"><br/>
+    password: <input type="password" name="password"><br/>
+    <input type="submit" value="로그인">
+</form> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">
+    <title>Login</title>
+</head>
+<body>
+    <section id="wrap">
+        <form class="login_form" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <button type="button" id="logo" onClick="location.href='http://127.0.0.1:8000'">플젝<br/>친구</button>
+            <input id="id" type="text" name="username" placeholder="아이디"><br/>
+            <input id="password" type="password" name="password" placeholder="비밀번호"><br/>
+            <input id="btn" type="submit" value="로그인"><br/>
+        </form>
+    </section>
+    <section id="signup">
+        <p>계정이 없으신가요?<a href="{% url 'signup' %}" id="signup_btn">회원가입</a></p>
+    </section>
+</body>
+</html>

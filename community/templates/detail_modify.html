@@ -1,0 +1,79 @@
+<!-- <h1>글 수정</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="수정">
+</form> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/create.css' %}" type="text/css">
+    <title>글 수정</title>
+</head>
+<body>
+    <section class="top">
+        <button type="button" id="logo" onClick="location.href='http://127.0.0.1:8000'">플젝<br/>친구</button>
+        <div id="nav_menu">
+            <ul>
+                <li><a href="{% url 'study' %}">팀플</a></li>
+                <li><a href="{% url 'project' %}">대외활동</a></li>
+                <li><a href="{% url 'exhibition' %}">공모전</a></li>
+            </ul>
+        </div>
+        <img id="image" src="{% static 'images/login.PNG' %}">
+        <div id="login">
+            {% if user.is_authenticated %}
+            {{ user.username }}&nbsp&nbsp 님&nbsp |
+            <a href="{% url 'logout' %}"> &nbsp로그아웃</a>
+            {% else %}
+            <a href="{% url 'login' %}">로그인</a>
+            <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </div>
+    </section>
+    <section class="content_box">
+        <div id="title">
+            <ul>
+                <li id="a">팀플 인원 모집(글 수정)</li>
+                <li id="red">*필수 항목</li>
+            </ul>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <table>
+                {{ form.as_table }}
+            </table> -->
+            <table class="table2">
+                <tr>
+                    <td>카테고리 <span style="color: rgb(255,0,0);">*</span></td>
+                    <td>{{form.category}}</td>
+                </tr>
+                <tr>
+                    <td>제목 <span style="color: rgb(255,0,0);">*</span></td>
+                    <td>{{form.title}}</td>
+                </tr>
+                <tr>
+                    <td>캠퍼스 선택 <span style="color: rgb(255,0,0);">*</span></td>
+                    <td><input type="checkbox">인사캠&nbsp&nbsp&nbsp&nbsp<input type="checkbox">자과캠</td>
+                </tr>
+                <tr>
+                    <td>내용 <span style="color: rgb(255,0,0);">*</span></td>
+                    <td>{{form.body}}</td>
+                </tr>
+                <tr>
+                    <td>사진</td>
+                    <td>{{form.photo}}</td>
+                </tr>
+            </table>
+            <input class="write" type="submit" value="글 수정">
+        </form>
+    </section>
+</body>
+</html>

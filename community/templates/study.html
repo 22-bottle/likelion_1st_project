@@ -1,0 +1,303 @@
+<!--<h1>스터디</h1>
+
+{% for post in posts %}
+    {% if post.category == 'TP' %}
+        <a href="{% url 'detail' post.id %}"><h3>제목 : {{ post.title }}</h3></a>
+        <h4>작성일 : {{ post.date }}</h4>
+        <h4>작성자 : {{ post.author.username }}</h4>
+        <hr/>
+    {% endif %}
+{% endfor %}-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Canvas</title>
+<style type="text/css">
+ @font-face {
+    font-family: 'Cafe24Oneprettynight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.top{
+    position: absolute;
+    border-bottom: 1px solid #808080;   
+    height: 130px;
+    width: 1400px;
+    left:40px;
+}
+#logo{
+    background-color: white;
+    border: 3px solid white;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    font-family: 'Cafe24Oneprettynight';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    color: #000000;
+}
+#login{
+    padding: 0px 50px 0px 50px;
+    position: absolute;
+    left: 1130px;
+    top: 85px;
+    color:#504A4A;
+    font-size: 14pt;
+}
+
+#image{
+    position: absolute;
+    left: 1120px;
+    top:74px;
+    width: 40px;
+    height: 40px;
+}
+
+#nav_menu ul {
+ position: absolute;
+ left: 240px;
+ top: 60px;
+ list-style-type:none;
+ padding:1px 5px 5px 1px;
+ float:right;
+}
+
+#nav_menu ul li {
+ display:inline;
+ padding: 0px 30px 0px 30px;
+ margin: 5px 0px 5px 0px;
+ font-size:20pt;
+ font-weight: 700;
+}
+
+#nav_menu a {
+    text-decoration:none;
+    color:black;
+}
+
+#nav_menu a:hover {
+    color:#427585;
+}
+    body{
+        line-height:2em;        
+        font-family:"맑은 고딕";
+}
+    ul, li{ 
+        list-style:none;
+        text-align:center;
+        padding:0;
+        margin:0;
+}
+
+    #mainWrapper{
+    position:absolute;
+    top:200px;
+    left: 30%;       
+    width: 800px;
+    margin: 0 auto; /*가운데 정렬*/
+    }
+
+    #mainWrapper > ul > li:first-child {
+        text-align: center;
+        font-size:14pt;
+        height:40px;
+        vertical-align:middle;
+        line-height:30px;
+}
+
+#ulTable {
+        margin-top:10px;
+}
+#bb{
+    color:white;
+}    
+
+    #ulTable > li:first-child > ul > li {
+        background-color:#5b91a3;
+        font-weight:bold;
+        text-align:center;
+}
+
+    #ulTable > li > ul {
+        clear:both;
+        padding:0px auto;
+        position:relative;
+        min-width:40px;
+}
+    #ulTable > li > ul > li { 
+        float:left;
+        font-size:10pt;
+        border-bottom:1px solid #5b91a3;
+        vertical-align:baseline;
+}    
+
+    #ulTable > li > ul > li:first-child               {width:10%;} /*No 열 크기*/
+    #ulTable > li > ul > li:first-child +li           {width:45%;} /*제목 열 크기*/
+    #ulTable > li > ul > li:first-child +li+li        {width:20%;} /*작성일 열 크기*/
+    #ulTable > li > ul > li:first-child +li+li+li     {width:15%;} /*작성자 열 크기*/
+    #ulTable > li > ul > li:first-child +li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+    #divPaging {
+        position:absolute;
+        top:200px;
+        left: 23%;       
+        clear:both; 
+        margin:0 auto; 
+        width:220px; 
+        height:50px;
+}
+
+    #divPaging > div {
+        float:left;
+        width: 30px;
+        margin:0 auto;
+        text-align:center;
+}
+
+    #liSearchOption {
+        position: absolute;
+        top:130px;
+        left:470px;
+        clear:both;
+    }
+    #liSearchOption > div {
+        margin:0 auto; 
+        margin-top: 30px; 
+        width:auto; 
+        height:100px;
+
+}
+.left {
+        text-align : left;
+}
+#submit{
+    text-align: center;
+    width: 60px;
+    height: 35px;
+    border: #5b91a3;
+    border-radius: 5px;
+    background-color: #5b91a3;
+    position: absolute;
+    left: 65%;
+    top: 160px;
+    font-size: small;
+    color:white;
+}
+#subit:hover{
+    background-color: #70a7b8; 
+}
+#submit a{
+    color:white;
+    text-decoration: none;
+}
+
+#btn{
+    color: white;
+    text-align: center;
+    width: 60px;
+    height: 30px;
+    border: #5b91a3;
+    border-radius: 5px;
+    background-color: #5b91a3;
+    position: absolute;
+    left: 105%;
+    top: 30px;
+    font-size: small;
+}
+
+#btn:hover{
+    background-color: #70a7b8; 
+}
+#link{
+    text-decoration: none;
+    color:#000000;
+}
+</style>
+
+</head>
+<body>
+    <section class="top">
+        <button type="button" id="logo" onClick="location.href='http://127.0.0.1:8000'">플젝<br/>친구</button>
+        <div id="nav_menu">
+            <ul>
+                <li><a href="{% url 'study' %}">팀플</a></li>
+                <li><a href="{% url 'project' %}">대외활동</a></li>
+                <li><a href="{% url 'exhibition' %}">공모전</a></li>
+            </ul>
+        </div>
+        <img id="image" src="{% static 'images/login.PNG' %}">
+        <div id="login">
+            {% if user.is_authenticated %}
+            {{ user.username }}&nbsp&nbsp 님&nbsp |
+            <a href="{% url 'logout' %}"> &nbsp로그아웃</a>
+            {% else %}
+            <a href="{% url 'login' %}">로그인</a>
+            <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </div>
+    </section>
+    <div id="mainWrapper">
+            <!-- 게시판 목록  -->
+            <li>
+                <ul id ="ulTable">
+                    <li id="bb">
+                        <ul>
+                            <li>제목</li>
+                            <li>작성일</li>
+                            <li>작성자</li>
+                        </ul>
+                    </li>
+                    <!-- 게시물이 출력될 영역 -->
+
+                    {% for post in posts %}
+                        {% if post.category == 'TP' %}
+                        <li>
+                            <ul>
+                                    <li class="left"> <a id="link" href="{% url 'detail' post.id %}">{{ post.title }}</a></li>
+                                    <li>{{ post.date }}</li>
+                                    <li>{{ post.author.username }}</li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+            <!-- 게시판 페이징 영역 -->
+            <li>
+                <div id="divPaging">
+                    <div>◀</div>
+                       <div><b>1</b></div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>▶</div>
+                </div>
+            </li>
+        </ul>
+    </div>   
+            <!-- 검색 폼 영역 -->
+            <li id='liSearchOption'>
+                <div>
+                    <select id='selSearchOption' >
+                        <option value='A'>제목+내용</option>
+                        <option value='T'>제목</option>
+                        <option value='C'>내용</option>
+                    </select>
+                    <input id='txtKeyWord' />
+                    <input id="btn" type='button' value='검색'/>
+                </div>
+                </li>
+                
+{% if user.is_authenticated %} 
+<div id="submit">
+<a href="{% url 'create' %}">글쓰기</a>
+{% endif %}
+</div>
+</body>
+</html>

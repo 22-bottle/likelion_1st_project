@@ -1,0 +1,57 @@
+<!-- <form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+    username: <input type="text" name="username"><br/>
+    password: <input type="password" name="password"><br/>
+    repeat: <input type="password" name="repeat"><br/>
+    <input type="submit" value="회원가입">
+</form>
+ -->
+ {% load static %}
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/signup.css' %}" type="text/css">
+        <title>SignUp</title>
+    </head>
+    <body>
+        <section class="sign_box">
+            <section class="centent_box">
+                <h2>플젝친구 회원가입</h2>
+                <p class="description">
+                    플젝친구 계정으로
+                    <strong>팀플, 공모전, 대외활동</strong>
+                     등<br>
+                    다양한 대학생 서비스를 모두 이용하실 수 있습니다.
+                </p><br>
+                <form action="{% url 'signup' %}" method="POST">
+                    {% csrf_token %}
+                    <b class="label">ID</b><br>
+                    <input class="text" type="text" name="username" placeholder=" 아이디"><br><br>
+                    <b class="label">PW</b><br>
+                    <input class="text" type="password" name="password" placeholder=" 패스워드"><br><br>
+                    <b class="label">PW 확인</b><br>
+                    <input class="text" type="password" name="repeat" placeholder=" 패스워드 확인"><br><br>
+                    <b class="label">email</b><br>
+                    <input class="text" type="text" placeholder=" 학교 이메일을 입력하세요."><br><br>
+                <div>
+                    <input type="checkbox"> 학교 email 인증 요청
+                    <p class="description">&nbsp&nbsp&nbsp&nbsp&nbsp(학교 이메일 인증 후 서비스를 이용하실 수 있습니다.)</p>
+                </div>
+                <br>
+                <div>
+                    <input class="sign_up" type="submit" value="회원가입" onclick="js:start()">
+                </div>
+                </form>
+            </section>
+        </section>
+        <script>
+            function start()
+            {
+                alert("해당 메일로 인증 메일이 발송되었습니다. 메일을 확인하세요. ");
+            }
+        </script>
+    </body>
+</html>

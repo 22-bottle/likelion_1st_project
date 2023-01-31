@@ -1,0 +1,34 @@
+<!-- 로그인 실패
+<br/>
+<a href="{% url 'login' %}">다시 로그인</a> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">
+    <title>bad Login</title>
+</head>
+<body>
+    <section class="error">
+        <img id="image"src="{% static 'images/warning_light.PNG' %}">
+        <p1 id="error_content"> 아이디 또는 비밀번호를 잘못 입력하셨습니다.<br/>  
+        &nbsp&nbsp&nbsp&nbsp입력하신 내용을 다시 확인해주세요.  
+        </p1>
+    </section>
+    <section id="wrap">
+        <form class="login_form" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <button type="button" id="logo" onClick="location.href='http://127.0.0.1:8000'">플젝<br/>친구</button>
+            <input id="id" type="text" name="username" placeholder="아이디"><br/>
+            <input id="password" type="password" name="password" placeholder="비밀번호"><br/>
+            <input id="btn" type="submit" value="로그인"><br/>
+        </form>
+        <section id="signup">
+        <p>계정이 없으신가요?<a href="{% url 'signup' %}" id="signup_btn">회원가입</a></p>
+        </section>
+    </section>
+</body>
+</html>

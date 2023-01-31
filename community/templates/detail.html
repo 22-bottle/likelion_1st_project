@@ -1,0 +1,116 @@
+<!-- <h1>제목</h1>
+{{ post_detail.title }}
+
+<h2>작성자</h2>
+{{ post_detail.author.username }}
+
+<h2>날짜</h2>
+{{ post_detail.date }}
+
+<h3>본문</h3>
+{{ post_detail.body }}
+
+{% if post_detail.photo %}
+    <img src="{{ post_detail.photo.url }}" alt="", height="600">
+{% endif %}
+
+{% if user.username == post_detail.author.username %}
+    <a href="{% url 'modify' post_detail.id %}">수정</a>
+    <a href="{% url 'delete' post_detail.id %}">삭제</a>
+{% endif %}
+
+<h3>댓글</h3>
+<form method="POST", action="{% url 'create_comment' post_detail.id %}">
+    {% csrf_token %}
+    {{ comment_form}}
+    <input type="submit">
+</form>
+
+{% for comment in post_detail.comment_set.all %}
+    {% if not comment.secret or user.username == comment.author.username or user.username == post_detail.author.username %}
+        <p>{{ comment.author.username }} : {{ comment }}</p><hr/>
+    {% else %}
+        <p>비밀 댓글입니다.</p><hr/>
+    {% endif %}
+{% endfor %} -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}" type="text/css">
+    <title>본문</title>
+</head>
+<body>
+    <section class="top">
+        <button type="button" id="logo" onClick="location.href='http://127.0.0.1:8000'">플젝<br/>친구</button>
+        <div id="nav_menu">
+            <ul>
+                <li><a href="{% url 'study' %}">팀플</a></li>
+                <li><a href="{% url 'project' %}">대외활동</a></li>
+                <li><a href="{% url 'exhibition' %}">공모전</a></li>
+            </ul>
+        </div>
+        <img id="image" src="{% static 'images/login.PNG' %}">
+        <div id="login">
+            {% if user.is_authenticated %}
+            {{ user.username }}&nbsp&nbsp 님&nbsp |
+            <a href="{% url 'logout' %}"> &nbsp로그아웃</a>
+            {% else %}
+            <a href="{% url 'login' %}">로그인</a>
+            <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </div>
+    </section>
+    <div id="title">
+        팀플 인원 모집
+    </div>
+    <a id="finish" href="{% url 'delete' post_detail.id %}">모집 마감</a>
+    <section class="content">
+        <div id="top">
+            <strong>{{ post_detail.title }}<br><br></strong>
+            <ul>
+                <li><img id="image_two" src="{% static 'images/login.PNG' %}"></li>
+                <li>{{ post_detail.author.username }}&nbsp&nbsp&nbsp님</li> 
+            </ul>
+            <span style="color: rgb(255,0,0); float:right; font-size:small;">{{ post_detail.date }}</span>
+        </div>
+        <div id="box">인사캠</div>
+        <div id="middle">
+            <h3>설명</h3>
+            {{ post_detail.body|linebreaksbr }}
+            
+            {% if post_detail.photo %}
+                <img src="{{ post_detail.photo.url }}" alt="", height="600">
+            {% endif %}
+        </div>
+        <div id="bottom">
+            <ul>
+            {% if user.username == post_detail.author.username %}
+                <li><a  href="{% url 'modify' post_detail.id %}">수정</a></li>
+                <li><a  href="{% url 'delete' post_detail.id %}">삭제</a></li>
+            {% endif %}
+            </ul>
+        </div>
+    </section>
+    <section class="comment">
+        <h3>댓글</h3>
+        <form method="POST", action="{% url 'create_comment' post_detail.id %}">
+            {% csrf_token %}
+            {{ comment_form}}
+            <input class="submit" type="submit"><hr>
+        </form>
+        {% for comment in post_detail.comment_set.all %}
+            {% if not comment.secret or user.username == comment.author.username or user.username == post_detail.author.username %}
+                <p>{{ comment.author.username }} : {{ comment }}</p><hr/>
+            {% else %}
+                <p>비밀 댓글입니다.</p><hr/>
+            {% endif %}
+        {% endfor %}  
+    </section>
+</body>
+</html>
